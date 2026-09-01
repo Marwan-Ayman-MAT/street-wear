@@ -18,7 +18,9 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+  ),
   title: {
     default: "STREET WEAR | Premium Streetwear Clothing",
     template: "%s | STREET WEAR"
@@ -56,10 +58,16 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${archivo.variable} font-sans antialiased`}>
+      <body
+        className={`${inter.variable} ${archivo.variable} font-sans antialiased`}
+      >
         <Providers>
           <Header />
           <main>{children}</main>
